@@ -48,6 +48,8 @@ export default function IstProfile() {
         })
             .then((docRef) => {
                 console.log("Document written with ID: ", docRef.id);
+                alert("Ist-Profil erstellt");
+
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);
@@ -63,30 +65,28 @@ export default function IstProfile() {
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Ist Profile</h2>
-                    <Form.Group id="mid">
-                        <Form.Label>MitarbeiterID</Form.Label>
+
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group id="mid">
+                            <Form.Label>MitarbeiterID</Form.Label>
+                            <Form.Control
+                                placeholder="Mitarbeiter ID"
+                                required
+                                inputRef={(ref) => {this.mitarbeiter = ref}}
+                                onChange={e => setMit(e.target.value)}
+                            />
+                        </Form.Group>
+
+
+                        <Form.Group id="Bildungsgrad">
+                        <Form.Label>Bildungsgrad</Form.Label>
                         <Form.Control
-                            placeholder="Mitarbeiter ID"
-                            required
-                            inputRef={(ref) => {this.mitarbeiter = ref}}
-                            onChange={e => setMit(e.target.value)}
+                            placeholder="Bildungsgrad"
+
+                            onChange={e => setBildungs(e.target.value)}
                         />
                     </Form.Group>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group id="Bildungsgrad">
-                            <Form.Label>Nennen Sie Ihren höchsten Bildungsabschluss?
-                                <Form.Control as="select" defaultValue="Wähle...">
-                                    <option>Ohne Abschluss</option>
-                                    <option>Berufsausbildung HWK/IHK</option>
-                                    <option>Meister/Fachwirt HWK/IHK</option>
-                                    <option>Bachelor</option>
-                                    <option>Diplom FH/DH</option>
-                                    <option>Diplom (Univ.) od. Master</option>
-                                    <option>Promotion</option>
-                                    onChange={e => setBildungs(e.target.value)}
-                                </Form.Control>
-                        </Form.Label>
-                        </Form.Group>
+
                         <Form.Group id="Berufserfahrunga">
                             <Form.Label>Wie lange arbeiten Sie insgesamt im Öffentlichen-Dienst?
                                 <Form.Control type="range" min="1" max="40" step="1"
@@ -116,51 +116,39 @@ export default function IstProfile() {
                                           onChange={e => setD(e.target.value)}
                             />
                         </Form.Group>
-                        <Form.Group controlId="Schwerpunkt Aufgabe">
+                        <Form.Group id="Schwerpunkt Aufgabe">
                             <Form.Label>In welcher Aufgabe liegt der Schwerpunkt Ihrer aktuellen Tätigkeit?</Form.Label>
-                            <Form.Control as="select" defaultValue="Wähle...">
-                                <option>Steuerung</option>
-                                <option>Führung</option>
-                                <option>Projekte</option>
-                                <option>Fach- bzw. Querschnittsaufgaben</option>
+                            <Form.Control
+                                placeholder="Schwerpunkt Aufgabe"
+
                                 onChange={e => setAufgabe(e.target.value)}
-                            </Form.Control>
+                            />
                         </Form.Group>
-                        <Form.Group controlId="Schwerpunkt Tätigkeit">
-                            <Form.Label>Beschreiben Sie die grundsätzliche Ausrichtung Ihrer derzeitigen Tätigkeit?
-                            <Form.Control as="select" defaultValue="Wähle...">
-                                <option>Strategie</option>
-                                <option>Planung</option>
-                                <option>Umsetzung</option>
-                                <option>Kontrolle</option>
+                        <Form.Group id="Schwerpunkt Tätigkeit">
+                            <Form.Label>Beschreiben Sie die grundsätzliche Ausrichtung Ihrer derzeitigen Tätigkeit?</Form.Label>
+                            <Form.Control
+                                placeholder="Schwerpunkt Tätigkeit"
+
                                 onChange={e => setTat(e.target.value)}
-                            </Form.Control>
-                        </Form.Label>
-
-                    </Form.Group>
-                        <Form.Group controlId="Persönlichkeitsprofil">
-                            <Form.Label>Wo sehen Sie Ihr größtes Potential?
-                                <Form.Control as="select" defaultValue="Wähle...">
-                                    <option>Innovative Ideen entwickeln</option>
-                                    <option>Menschen für Veränderungen zu begeistern</option>
-                                    <option>Neuerungen in der Praxis zu implementieren</option>
-                                    <option>Technik selbst aktiv anzuwenden</option>
-                                    onChange={e => setPerso(e.target.value)}
-                                </Form.Control>
-                            </Form.Label>
+                            />
                         </Form.Group>
-                        <Form.Group controlId="Schwerpunkt Kompetenzprofil">
-                            <Form.Label>In welchem Bereich sehen Sie sich perspektivisch in 5 Jahren?
 
-                                <Form.Control as="select" defaultValue="Wähle...">
-                                    <option>Entwicklung von Innovationen</option>
-                                    <option>Umsetzung von Change- u. Transformationsprozessen</option>
-                                    <option>Transfer des Neuen in die Praxis</option>
-                                    <option>Ausführung von operativen Tätigkeiten</option>
-                                    onChange={e => setKompo(e.target.value)}
-                                </Form.Control>
-                            </Form.Label>
+                        <Form.Group id="Persönlichkeitsprofil">
+                            <Form.Label>Wo sehen Sie Ihr größtes Potential?</Form.Label>
+                            <Form.Control
+                                placeholder="Persönlichkeitsprofil"
+
+                                onChange={e => setPerso(e.target.value)}
+                            />
                         </Form.Group>
+                        <Form.Group id="Schwerpunkt Kompetenzprofil">
+                            <Form.Label>In welchem Bereich sehen Sie sich perspektivisch in 5 Jahren?</Form.Label>
+                            <Form.Control
+                                placeholder="Schwerpunkt Kompetenzprofil"
+                                onChange={e => setKompo(e.target.value)}
+                            />
+                        </Form.Group>
+
                         <Button disabled={loading} className="w-100" type="submit">
                             Update
                         </Button>

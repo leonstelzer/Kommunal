@@ -59,6 +59,7 @@ export default function SollProfile (){
 
         })
             .then((docRef) => {
+                alert("Soll-Profil erstellt");
                 console.log("Document written with ID: ", docRef.id);
             })
             .catch((error) => {
@@ -85,18 +86,18 @@ export default function SollProfile (){
                         />
                     </Form.Group>
                     <Form onSubmit={handleSubmit}>
+
+
                         <Form.Group id="Bildungsgrad">
-                            <Form.Label>Welches Level der Qualifikation wird benötigt, um den Anforderungen an die Stelle gerecht zu werden?
-                                <Form.Control as="select">
-                                    <option>Unterdurchschnittliche Qualifikation</option>
-                                    <option>Duchschnittliche Qualifikation</option>
-                                    <option>Überdurchschnittliche Qualifikation</option>
-                                    onChange={e => setBildungs(e.target.value)}
+                            <Form.Label>Welches Level der Qualifikation wird benötigt, um den Anforderungen an die Stelle gerecht zu werden?</Form.Label>
+                            <Form.Control
+                                placeholder="Bildungsgrad"
 
-
-                                </Form.Control>
-                            </Form.Label>
+                                onChange={e => setBildungs(e.target.value)}
+                            />
                         </Form.Group>
+
+
                         <Form.Group id="Berufserfahrunga">
                             <Form.Label>Wird Berufserfahrung im Öffentlichen-Dienst benötigt?
                                 <Form.Control type="range" min="1" max="40" step="1"
@@ -124,82 +125,59 @@ export default function SollProfile (){
                             <Form.Control type="range" min="1" max="40" step="1"
                                           onChange={e => setD(e.target.value)}/>
                         </Form.Group>
-                        <Form.Group controlId="Schwerpunkt Aufgabe">
+
+                        <Form.Group id="Schwerpunkt Aufgabe">
                             <Form.Label>Wo liegt der Schwerpunkt der Aufgabe der Stelle?</Form.Label>
-                            <Form.Control as="select">
-                                <option>Steuerung</option>
-                                <option>Führung</option>
-                                <option>Projekte</option>
-                                <option>Fach- bzw. Querschnittsaufgaben</option>
+                            <Form.Control
+                                placeholder="Schwerpunkt Aufgabe"
+
                                 onChange={e => setAufgabe(e.target.value)}
-                            </Form.Control>
+                            />
                         </Form.Group>
-                        <Form.Group controlId="Schwerpunkt Tätigkeit">
-                            <Form.Label>Welche grundsätzliche Tätigkeit überwiegt bei der Stelle?
-                                <Form.Control as="select">
-                                    <option>Strategie</option>
-                                    <option>Planung</option>
-                                    <option>Umsetzung</option>
-                                    <option>Kontrolle</option>
-                                    onChange={e => setTat(e.target.value)}
-                                </Form.Control>
-                            </Form.Label>
 
+                        <Form.Group id="Schwerpunkt Tätigkeit">
+                            <Form.Label>Welche grundsätzliche Tätigkeit überwiegt bei der Stelle?</Form.Label>
+                            <Form.Control
+                                placeholder="Schwerpunkt Tätigkeit"
+
+                                onChange={e => setTat(e.target.value)}
+                            />
                         </Form.Group>
-                        <Form.Group controlId="Persönlichkeitsprofil">
-                            <Form.Label>Was erfordert die Stelle in besonderem Maße?
 
-                                <Form.Control as="select">
-                                    <option>Analysefähigkeit</option>
-                                    <option>Teamfähigkeit</option>
-                                    <option>Technikaffinität</option>
-                                    <option>Organisationsvermögen</option>
-                                    <option>Kontinuität</option>
-                                    onChange={e => setPerso(e.target.value)}
+                        <Form.Group id="Persönlichkeitsprofil">
+                            <Form.Label>Was erfordert die Stelle in besonderem Maße?</Form.Label>
+                            <Form.Control
+                                placeholder="Persönlichkeitsprofil"
 
-                                </Form.Control>
-                            </Form.Label>
+                                onChange={e => setPerso(e.target.value)}
+                            />
                         </Form.Group>
-                        <Form.Group controlId="Schwerpunkt Kompetenzprofil">
-                            <Form.Label>Welche Kompetenz flankiert die Stelle am stärksten?
 
-                                <Form.Control as="select">
-                                    <option>Entwicklung von Innovationen</option>
-                                    <option>Umsetzung von Change- u. Transformationsprozessen</option>
-                                    <option>Transfer des Neuen in die Praxis</option>
-                                    <option>Ausführung von operativen Tätigkeiten</option>
-                                    onChange={e => setKompo(e.target.value)}
-
-                                </Form.Control>
-                            </Form.Label>
+                        <Form.Group id="Schwerpunkt Kompetenzprofil">
+                            <Form.Label>Welche Kompetenz flankiert die Stelle am stärksten?</Form.Label>
+                            <Form.Control
+                                placeholder="Schwerpunkt Kompetenzprofil"
+                                onChange={e => setKompo(e.target.value)}
+                            />
                         </Form.Group>
-                        <Form.Group controlId="Geeignete Kursangebote">
-                            <Form.Label>Welches Kompetenzprofil erwarten Sie von der erworbenen Qualifikationen?
-                                <Form.Control as="select">
-                                    <option>Handlungssicherheit mit ablauforganisatorischen Prozessen im Kontext der Digitalisierung</option>
-                                    <option>Handlungssicherheit in Projekten der Verwaltungsdigitalisierung</option>
-                                    <option>Handlungssicherheit bei der Gestaltung von Veränderungen und Modernisierungsvorhaben</option>
-                                    onChange={e => setKurs(e.target.value)}
 
-                                </Form.Control>
-                            </Form.Label>
+                        <Form.Group id="Geeignete Kursangebote">
+                            <Form.Label>Welches Kompetenzprofil erwarten Sie von der erworbenen Qualifikationen?</Form.Label>
+                            <Form.Control
+                                placeholder="Geeignete Kursangebote"
+                                onChange={e => setKurs(e.target.value)}
+                            />
                         </Form.Group>
-                        <Form.Group controlId="Erwartetes Kompetentniveau">
-                            <Form.Label>Welches Niveau erwarten sie von der erworbenen Qualifikation?
 
-
-                                <Form.Control as="select">
-                                    <option>Die Qualifikation sollte Basiswissen vermitteln (entspricht Level Educated)
-                                    </option>
-                                    <option>Die Qualifikation sollte hohe Handlungssicherheit vermitteln (entspricht Level Professional)
-                                    </option>
-                                    <option>Die Qualifikation sollte in Theorie und Praxis auf Expertenniveau sein (entspricht Level Expert)
-                                    </option>
-                                    onChange={e => setErw(e.target.value)}
-
-                                </Form.Control>
-                            </Form.Label>
+                        <Form.Group id="Erwartetes Kompetentniveau">
+                            <Form.Label>Welches Niveau erwarten sie von der erworbenen Qualifikation?</Form.Label>
+                            <Form.Control
+                                placeholder="Geeignete Kursangebote"
+                                onChange={e => setErw(e.target.value)}
+                            />
                         </Form.Group>
+
+
                         <Button disabled={loading} className="w-100" type="submit">
                             Update
                         </Button>
